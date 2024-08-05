@@ -1,0 +1,52 @@
+import json
+import boto3
+import logging
+
+# Initialize AWS clients
+sqs = boto3.client('sqs')
+dynamodb = boto3.resource('dynamodb')
+sns = boto3.client('sns')
+
+# DynamoDB table name
+DYNAMODB_TABLE = 'realtimedataprocessing-transactions-table'
+# SNS topic ARN
+SNS_TOPIC_ARN = 'arn:aws:sns:us-east-2:637423377183:realtimedataprocessing-transactions-topic'
+
+# Configure logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event, context):
+    """
+    Lambda function handler to process SQS messages, validate data, store in DynamoDB, and send notifications.
+    """
+    table = dynamodb.Table(DYNAMODB_TABLE)
+    
+    for record in event.get('Records', []):
+        try:
+            # Get the message body
+            message_body = json.loads(record['body'])
+            
+            # Example validation: Check if amount is greater than 50
+            if message_body.get('amount', 0) > 50:
+                # Store valid transaction in DynamoDB
+                response = table.put_item(Item=message_body)
+                logger.info(f"Stored item: {message_body}")
+                
+                # Send notification via SNS
+                sns.publish(
+                    TopicArn=SNS_TOPIC_ARN,
+                    Message=json.dumps({'default': f"Large order detected: {message_body}"}),
+                    MessageStructure='json'
+                )
+                logger.info(f"Notification sent for item: {message_body}")
+            else:
+                logger.info(f"Transaction not stored (amount <= 50): {message_body}")
+        
+        except Exception as e:
+            logger.error(f"Error processing record {record}: {str(e)}")
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Transactions processed')
+    }

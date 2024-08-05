@@ -15,7 +15,7 @@ def create_sqs_queue(queue_name):
         QueueName=queue_name,
         Attributes={
             'DelaySeconds': '0',
-            'MessageRetentionPeriod': '86400'
+            'MessageRetentionPeriod': '345600'  # 4 days in seconds
         }
     )
     
@@ -23,5 +23,6 @@ def create_sqs_queue(queue_name):
     return response['QueueUrl']
 
 if __name__ == "__main__":
-    queue_url = create_sqs_queue('realtimedataprocessing-transactions-queue')
+    queue_name = 'realtimedataprocessing-transactions-queue'
+    queue_url = create_sqs_queue(queue_name)
     print(f"SQS Queue URL: {queue_url}")

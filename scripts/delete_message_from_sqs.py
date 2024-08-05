@@ -19,6 +19,6 @@ def delete_message_from_sqs(queue_url, receipt_handle):
     print("Message Deleted: ", response)
 
 if __name__ == "__main__":
-    queue_url = 'https://sqs.us-east-1.amazonaws.com/637423377183/realtimedataprocessing-transactions-queue'
-    receipt_handle = 'AQEBR7xWoeblr4fiMK4CG2LD0z5aO6dQbH7qpbZjTkIWuKthraeT0UpwgT447zhxW8Y5HlL9pCxN4hPT3Oy1Osv5ZCUzoVzdj2ERxqsGKALahpj5drloQQIkDf+D5SGWhvPwWpB75RwY96r0Y/7IlSL63PBu8p0nRoiirea/L9awFxQA+jnkrs4acUqqGSp2hFg7hpSyXtgD9GKIak5b9TlGa7a9Osp5xTA976Li9vWDaltNech3K2f8QQasoZ81ZYgWO0khr+DZufnKe60mYdoOpqmV8w/ui4hbStvf9eogZCdqQonl/UfzUDqzaJy0dU3YPrXCs6kRGlwhPE3MNZh5sQdtS+Bip6KjSICs4Ibxlrc6dv3LJpmnEmwsKbBFPzSsMxe1HxRW6nHxwFYfsMtwrbhHEO0bXISa3VG1DYN1l3I='
+    queue_url = 'https://sqs.us-east-2.amazonaws.com/637423377183/realtimedataprocessing-transactions-queue'
+    receipt_handle = 'AQEBHArMI93hEo2WLFW7GrIQgOhWFz4RyuRF5j+3Mwrl96NGVZZLGqBYf1NwTozWvUw04hlLdp42u3Qv0XCA55IbgKJzEmoovbGWGlwZ2okgJ29vxMkJAHXHWm+TLzYpTWt1wtGqDPRWElqQC/97iqSN0PQHAO1AxiZqShHUBHUUhiaDm5Df3dIs7288KchlHeRflBTTBV1Z2Bm13skfVSuXV9wqbR0E66BwqnAhQV25NyhfGhLdwYIBGxynEhv0qsksvLIz03z5FvcdTPkQmhB2hBRd3fybY119PQyqokiZv9ogF8zxyYbfNrPuuDJAHXjn+U78SWikCCGAPLyI7AyPQJY2nyNR03DmgSLw+u6xzJQJJOyGRI0sdX//yrvcnGbSSsx6D0JXmGxyU6XbqmJk6cEe/eoZo5rmpsHMJO5kA1+vuMOfYhmjRUkJEnDGMHbA'
     delete_message_from_sqs(queue_url, receipt_handle)
