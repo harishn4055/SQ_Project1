@@ -25,6 +25,6 @@ def subscribe_to_sns_topic(topic_arn, protocol, endpoint):
 if __name__ == "__main__":
     topic_arn = 'arn:aws:sns:us-east-2:637423377183:realtimedataprocessing-transactions-topic'
     protocol = 'email'  # Use 'email' for email subscriptions
-    endpoint = 'reddyalu05@gmail.com'  # Replace with your email address
+    endpoint = 'harishgaddam2k@gmail.com'  # Replace with your email address
     subscription_arn = subscribe_to_sns_topic(topic_arn, protocol, endpoint)
     print(f"SNS Subscription ARN: {subscription_arn}")
