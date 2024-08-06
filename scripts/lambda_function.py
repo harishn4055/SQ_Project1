@@ -1,6 +1,7 @@
 import json
 import boto3
 import logging
+import time
 
 # Initialize AWS clients
 sqs = boto3.client('sqs')
@@ -22,13 +23,21 @@ def lambda_handler(event, context):
     """
     table = dynamodb.Table(DYNAMODB_TABLE)
     
+    # Check for test inputs to trigger alarms
+    if 'test' in event:
+        if event['test'] == 'error':
+            raise Exception("Intentional error to trigger CloudWatch alarm")
+        elif event['test'] == 'duration':
+            time.sleep(10)  # Sleep for 10 seconds to exceed the duration threshold
+            return {'statusCode': 200, 'body': json.dumps('Duration test completed')}
+    
     for record in event.get('Records', []):
         try:
             # Get the message body
             message_body = json.loads(record['body'])
             
-            # Example validation: Check if amount is greater than 50
-            if message_body.get('amount', 0) > 50:
+            # Example validation: Check if amount is greater than 50000
+            if message_body.get('amount', 0) > 50000:
                 # Store valid transaction in DynamoDB
                 response = table.put_item(Item=message_body)
                 logger.info(f"Stored item: {message_body}")
@@ -50,3 +59,4 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Transactions processed')
     }
+    

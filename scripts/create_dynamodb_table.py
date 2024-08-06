@@ -1,16 +1,33 @@
 import boto3
+from botocore.exceptions import ClientError
+
+# Initialize AWS clients
+dynamodb = boto3.client('dynamodb')
+
+def modify_dynamodb_table(table_name):
+    try:
+        # Get current table details
+        table_description = dynamodb.describe_table(TableName=table_name)
+        print(f"Table '{table_name}' already exists.")
+        
+        # Example: Modify provisioned throughput (Increase read/write capacity units)
+        response = dynamodb.update_table(
+            TableName=table_name,
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 1,  # Example modification
+                'WriteCapacityUnits': 1
+            }
+        )
+        print("DynamoDB Table Modified:", response)
+    
+    except ClientError as e:
+        if e.response['Error']['Code'] == 'ResourceNotFoundException':
+            print(f"Table '{table_name}' does not exist. Creating new table.")
+            create_dynamodb_table(table_name)
+        else:
+            raise
 
 def create_dynamodb_table(table_name):
-    """
-    Create a DynamoDB table with the specified name and schema.
-
-    :param table_name: The name of the DynamoDB table.
-    :return: The ARN of the created DynamoDB table.
-    """
-    # Initialize the DynamoDB client
-    dynamodb = boto3.client('dynamodb')
-
-    # Create the DynamoDB table
     response = dynamodb.create_table(
         TableName=table_name,
         KeySchema=[
@@ -22,7 +39,7 @@ def create_dynamodb_table(table_name):
         AttributeDefinitions=[
             {
                 'AttributeName': 'transaction_id',
-                'AttributeType': 'S'  # String
+                'AttributeType': 'S'  # String type
             }
         ],
         ProvisionedThroughput={
@@ -30,11 +47,9 @@ def create_dynamodb_table(table_name):
             'WriteCapacityUnits': 5
         }
     )
-    
-    print("DynamoDB Table Created: ", response)
+    print("DynamoDB Table Created:", response)
     return response['TableDescription']['TableArn']
 
 if __name__ == "__main__":
     table_name = 'realtimedataprocessing-transactions-table'
-    table_arn = create_dynamodb_table(table_name)
-    print(f"DynamoDB Table ARN: {table_arn}")
+    modify_dynamodb_table(table_name)
