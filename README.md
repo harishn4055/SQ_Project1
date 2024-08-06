@@ -37,3 +37,4 @@ To stop all services and clean up resources:
 - **Delete SNS Topics**: Use AWS Console or `delete_sns_topic()` script.
 - **Delete SQS Queues**: Use AWS Console or `delete_sqs_queue()` script.
 - **Delete CloudWatch Alarms**: Use AWS Console or `delete_cloudwatch_alarm()` script.
+- **Delete IAM Roles and Policies**: Use AWS Console or 'delete_iam_roles()' script.
