@@ -59,8 +59,9 @@ if __name__ == "__main__":
     role_arn = create_iam_role(role_name, trust_policy)
     
     # Policy ARNs
+    #For Learning and Project Purpose I have given complete access for all the policies
     policies = [
-        'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+        'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole', 
         'arn:aws:iam::aws:policy/AmazonSQSFullAccess',
         'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess',
         'arn:aws:iam::aws:policy/AmazonSNSFullAccess',
