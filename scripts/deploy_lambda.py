@@ -12,14 +12,14 @@ def zip_lambda_code():
     """
     with zipfile.ZipFile('lambda_function.zip', 'w') as zipf:
         zipf.write('lambda_function.py', arcname='lambda_function.py')
-
-def upload_to_s3():
-    """
-    Upload the zipped Lambda function code to an S3 bucket.
-    """
-    s3 = boto3.client('s3')
-    with open('lambda_function.zip', 'rb') as data:
-        s3.upload_fileobj(data, 'lambda_function.zip')
+#This step is optional if you're directly deploying the code without S3 upload
+# def upload_to_s3():
+#     """
+#     Upload the zipped Lambda function code to an S3 bucket.
+#     """
+#     s3 = boto3.client('s3')
+#     with open('lambda_function.zip', 'rb') as data:
+#         s3.upload_fileobj(data, 'lambda_function.zip')
 
 def deploy_lambda_function():
     """

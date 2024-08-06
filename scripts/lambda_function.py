@@ -35,22 +35,26 @@ def lambda_handler(event, context):
         try:
             # Get the message body
             message_body = json.loads(record['body'])
+            amount = message_body.get('amount', 0)
             
-            # Example validation: Check if amount is greater than 50000
-            if message_body.get('amount', 0) > 50000:
+            # Example validation: Check if amount is greater than 0
+            if amount > 0:
                 # Store valid transaction in DynamoDB
                 response = table.put_item(Item=message_body)
                 logger.info(f"Stored item: {message_body}")
                 
-                # Send notification via SNS
-                sns.publish(
-                    TopicArn=SNS_TOPIC_ARN,
-                    Message=json.dumps({'default': f"Large order detected: {message_body}"}),
-                    MessageStructure='json'
-                )
-                logger.info(f"Notification sent for item: {message_body}")
+                # Send notification via SNS only if amount > 50000
+                if amount > 50000:
+                    sns.publish(
+                        TopicArn=SNS_TOPIC_ARN,
+                        Message=json.dumps({'default': f"Large order detected: {message_body}"}),
+                        MessageStructure='json'
+                    )
+                    logger.info(f"Notification sent for item: {message_body}")
+                else:
+                    logger.info(f"No notification sent (amount <= 50000): {message_body}")
             else:
-                logger.info(f"Transaction not stored (amount <= 50): {message_body}")
+                logger.info(f"Transaction not stored (amount = 0): {message_body}")
         
         except Exception as e:
             logger.error(f"Error processing record {record}: {str(e)}")
@@ -59,4 +63,3 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Transactions processed')
     }
-    

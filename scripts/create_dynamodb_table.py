@@ -14,8 +14,8 @@ def modify_dynamodb_table(table_name):
         response = dynamodb.update_table(
             TableName=table_name,
             ProvisionedThroughput={
-                'ReadCapacityUnits': 1,  # Example modification
-                'WriteCapacityUnits': 1
+                'ReadCapacityUnits': 5,  
+                'WriteCapacityUnits': 5
             }
         )
         print("DynamoDB Table Modified:", response)

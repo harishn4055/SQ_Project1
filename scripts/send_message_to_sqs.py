@@ -20,5 +20,5 @@ def send_message_to_sqs(queue_url, message_body):
 
 if __name__ == "__main__":
     queue_url = 'https://sqs.us-east-2.amazonaws.com/637423377183/realtimedataprocessing-transactions-queue'
-    message_body = '{"transaction_id": "1234", "amount": 100, "item": "Book"}'
+    message_body = '{"transaction_id": "4055", "amount": 500000, "item": "MacBook"}'
     send_message_to_sqs(queue_url, message_body)
