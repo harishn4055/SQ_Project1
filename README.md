@@ -37,8 +37,3 @@ To stop all services and clean up resources:
 - **Delete SNS Topics**: Use AWS Console or `delete_sns_topic()` script.
 - **Delete SQS Queues**: Use AWS Console or `delete_sqs_queue()` script.
 - **Delete CloudWatch Alarms**: Use AWS Console or `delete_cloudwatch_alarm()` script.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
