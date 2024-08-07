@@ -1,0 +1,32 @@
+Real-Time Data Processing Project
+Overview
+This project demonstrates a real-time data processing pipeline using AWS services. The pipeline handles e-commerce transactions, processes them with an AWS Lambda function, and stores the processed data in DynamoDB. CloudWatch is used for monitoring and alerting.
+
+Project Components
+AWS Lambda Function: Processes SQS messages, stores valid transactions in DynamoDB, and sends notifications via SNS.
+DynamoDB: Stores transaction data.
+SNS (Simple Notification Service): Sends notifications for large transactions.
+SQS (Simple Queue Service): Receives and queues transaction messages.
+CloudWatch: Monitors Lambda execution and DynamoDB performance, with alarms configured for errors, duration exceedance, and DynamoDB throttling.
+Setup and Configuration
+1. AWS Infrastructure Setup
+DynamoDB Table: realtimedataprocessing-transactions-table
+
+Primary Key: transaction_id (String)
+SNS Topic: realtimedataprocessing-transactions-topic
+
+ARN: arn:aws:sns:us-east-2:637423377183:realtimedataprocessing-transactions-topic
+SQS Queue: realtimedataprocessing-transactions-queue
+
+URL: https://sqs.us-east-2.amazonaws.com/637423377183/realtimedataprocessing-transactions-queue
+2. Lambda Function
+Function Name: ProcessRealtimeDataTransactions
+Functionality:
+Processes messages from SQS.
+Stores valid transactions in DynamoDB.
+Sends notifications via SNS for transactions with amounts greater than 50.
+3. CloudWatch Monitoring
+Alarms Configured:
+Lambda Error Alarm: Triggered if the Lambda function encounters errors.
+Lambda Duration Alarm: Triggered if the Lambda function execution duration exceeds 1000ms.
+DynamoDB Throttle Alarm: Triggered if there is DynamoDB throttling.
