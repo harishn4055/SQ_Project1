@@ -1,7 +1,7 @@
 {
     "Records": [
         {
-            "body": "{\"transaction_id\": \"4\", \"amount\": 10, \"item\": \"ooook\"}"
+            "body": "{\"transaction_id\": \"4\", \"amount\": 10, \"item\": \"Book\"}"
         }
     ]
 }

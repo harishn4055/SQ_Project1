@@ -36,7 +36,7 @@ def delete_iam_role(role_name):
 if __name__ == "__main__":
     # List of IAM roles to delete
     iam_roles = [
-        'YourIAMRoleName1'  # Add your IAM role names here
+        'LambdaExecutionRole'  
     ]
     
     for role_name in iam_roles:

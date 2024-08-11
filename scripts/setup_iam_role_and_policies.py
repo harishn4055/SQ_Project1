@@ -65,7 +65,8 @@ if __name__ == "__main__":
         'arn:aws:iam::aws:policy/AmazonSQSFullAccess',
         'arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess',
         'arn:aws:iam::aws:policy/AmazonSNSFullAccess',
-        'arn:aws:iam::aws:policy/CloudWatchEventsFullAccess'
+        'arn:aws:iam::aws:policy/CloudWatchEventsFullAccess',
+        'arn:aws:iam::aws:policy/AmazonS3FullAccess'
     ]
     
     # Attach policies to the role

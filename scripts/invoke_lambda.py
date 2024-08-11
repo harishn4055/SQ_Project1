@@ -5,7 +5,7 @@ import json
 lambda_client = boto3.client('lambda')
 
 # Configuration
-lambda_function_name = 'upload_to_s3_lambda'  # Replace with your Lambda function name
+lambda_function_name = 'upload_to_s3_lambda'  
 
 def invoke_lambda_function(function_name, payload):
     """
@@ -18,7 +18,7 @@ def invoke_lambda_function(function_name, payload):
     try:
         response = lambda_client.invoke(
             FunctionName=function_name,
-            InvocationType='RequestResponse',  # Change to 'Event' for asynchronous invocation
+            InvocationType='RequestResponse',  
             Payload=json.dumps(payload)
         )
         response_payload = json.loads(response['Payload'].read().decode('utf-8'))

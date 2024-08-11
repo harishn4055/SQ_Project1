@@ -17,7 +17,7 @@
     {"transaction_id": "16", "amount": 850, "item": "Item16"},
     {"transaction_id": "17", "amount": 900, "item": "Item17"},
     {"transaction_id": "18", "amount": 950, "item": "Item18"},
-    {"transaction_id": "19", "amount": 1000, "item": "Item19"},
+    {"transaction_id": "19", "amount": 75000, "item": "Item19"},
     {"transaction_id": "20", "amount": 1050, "item": "Item20"},
     {"transaction_id": "21", "amount": 1100, "item": "Item21"},
     {"transaction_id": "22", "amount": 1150, "item": "Item22"},
@@ -96,7 +96,7 @@
     {"transaction_id": "95", "amount": 100000, "item": "Item95"},
     {"transaction_id": "96", "amount": 4850, "item": "Item96"},
     {"transaction_id": "97", "amount": 4900, "item": "Item97"},
-    {"transaction_id": "98", "amount": 4950, "item": "Item98"},
-    {"transaction_id": "99", "amount": 50500, "item": "Item99"},
+    {"transaction_id": "98", "amount": 0, "item": "Item98"},
+    {"transaction_id": "99", "amount": 0, "item": "Item99"},
     {"transaction_id": "100", "amount": 0, "item": "Item100"}
 ]
