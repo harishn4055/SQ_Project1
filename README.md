@@ -64,6 +64,56 @@ These scripts are used to clean up AWS resources after the pipeline has been tes
 
 This project demonstrates a comprehensive real-time data processing pipeline using AWS services. The system automatically handles data ingestion, processing, notification, and monitoring, ensuring a scalable and efficient e-commerce transaction processing system. The cleanup scripts ensure that the AWS environment is left clean and free of unused resources.
 
+
+## Team Roles and Contributions
+
+This project was a collaborative effort among five team members, each bringing their expertise to ensure the success of the pipeline. The responsibilities were distributed as follows:
+
+1. AWS IAM and Security Setup
+
+	•	Lead: Abhishek
+	•	Responsibilities: Abhishek took charge of the critical task of setting up IAM roles and policies. He ensured that all services in the pipeline had the appropriate permissions, maintaining a secure environment across the AWS infrastructure.
+	•	Key Deliverables:
+	•	setup_iam_role_and_policies.py
+	•	delete_iam_roles.py
+
+2. SQS and SNS Setup
+
+	•	Lead: Bhavana
+	•	Responsibilities: Bhavana expertly handled the creation and configuration of SQS queues and SNS topics. Her work ensured seamless integration and communication between services, which was pivotal for the pipeline’s functionality.
+	•	Key Deliverables:
+	•	create_sqs_queue.py
+	•	create_sns_topic.py
+	•	delete_sqs_queue.py
+	•	delete_sns_topics.py
+
+3. Lambda Function Deployment and Data Processing
+
+	•	Lead: Chanukya
+	•	Responsibilities: Chanukya focused on the deployment of Lambda functions, implementing the core logic necessary for transaction processing. His work was central to the processing capabilities of the pipeline.
+	•	Key Deliverables:
+	•	deploy_lambda.py
+	•	lambda_function.py
+	•	invoke_lambda.py
+	•	delete_lambda_functions.py
+
+4. DynamoDB Setup and Data Storage
+
+	•	Lead: Jeevan
+	•	Responsibilities: Jeevan was responsible for setting up and configuring the DynamoDB table, ensuring that data storage and retrieval were both efficient and reliable. His work laid the foundation for the pipeline’s data management.
+	•	Key Deliverables:
+	•	create_dynamodb_table.py
+	•	delete_dynamoDB_tables.py
+
+5. Monitoring and Cleanup
+
+	•	Lead: Harish
+	•	Responsibilities: Harish set up CloudWatch alarms to monitor the pipeline’s health and performance. Additionally, he created cleanup scripts to ensure all AWS resources were properly deleted after use, maintaining a clean and efficient environment.
+	•	Key Deliverables:
+	•	create_cloudwatch_alarm.py
+	•	trigger_cloudwatch_alarms.py
+	•	delete_cloudwatch_alarms.py
+
 ## Repository Link
 
 [GitHub Repository](https://github.com/harishnaidu0207/SQ_Project1) - Link to the GitHub repository where the code and documentation are hosted.
