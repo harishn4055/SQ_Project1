@@ -71,7 +71,8 @@ This project was a collaborative effort among five team members, each bringing t
 
 1. AWS IAM and Security Setup
 
-	•	Lead: Abhishek
+
+####	•	Lead: Abhishek
 	•	Responsibilities: Abhishek took charge of the critical task of setting up IAM roles and policies. He ensured that all services in the pipeline had the appropriate permissions, maintaining a secure environment across the AWS infrastructure.
 	•	Key Deliverables:
 	•	setup_iam_role_and_policies.py
@@ -79,7 +80,7 @@ This project was a collaborative effort among five team members, each bringing t
 
 2. SQS and SNS Setup
 
-	•	Lead: Bhavana
+	### •	Lead: Bhavana
 	•	Responsibilities: Bhavana expertly handled the creation and configuration of SQS queues and SNS topics. Her work ensured seamless integration and communication between services, which was pivotal for the pipeline’s functionality.
 	•	Key Deliverables:
 	•	create_sqs_queue.py
@@ -89,7 +90,7 @@ This project was a collaborative effort among five team members, each bringing t
 
 3. Lambda Function Deployment and Data Processing
 
-	•	Lead: Chanukya
+	### •	Lead: Chanukya
 	•	Responsibilities: Chanukya focused on the deployment of Lambda functions, implementing the core logic necessary for transaction processing. His work was central to the processing capabilities of the pipeline.
 	•	Key Deliverables:
 	•	deploy_lambda.py
@@ -99,7 +100,7 @@ This project was a collaborative effort among five team members, each bringing t
 
 4. DynamoDB Setup and Data Storage
 
-	•	Lead: Jeevan
+###	•	Lead: Jeevan
 	•	Responsibilities: Jeevan was responsible for setting up and configuring the DynamoDB table, ensuring that data storage and retrieval were both efficient and reliable. His work laid the foundation for the pipeline’s data management.
 	•	Key Deliverables:
 	•	create_dynamodb_table.py
@@ -107,7 +108,7 @@ This project was a collaborative effort among five team members, each bringing t
 
 5. Monitoring and Cleanup
 
-	•	Lead: Harish
+### •	Lead: Harish
 	•	Responsibilities: Harish set up CloudWatch alarms to monitor the pipeline’s health and performance. Additionally, he created cleanup scripts to ensure all AWS resources were properly deleted after use, maintaining a clean and efficient environment.
 	•	Key Deliverables:
 	•	create_cloudwatch_alarm.py
